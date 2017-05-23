@@ -134,8 +134,9 @@ $ # in this mode, tests/observed_shifts_assigned_2KOC.txt should contain a singl
 $
 $ # assign chemical shift contained in an assigned chemical shift data file based on LARMORD chemical shifts computed from a set of conformations (here 30 conformations)
 ./bin/scaha tests/larmord_2KOC_pool.txt tests/observed_shifts_assigned_2KOC.txt --verbose --output=tests/assigned_shifts
-$ # same as above except scaha is executed in parallel mode
-$ # efficient if being executed in a mult-thread computing environment
+$
+$ # same as above, except SCAHA is being executed in parallel mode, 
+$ # which is efficient if being executed in a mult-thread computing environment 
 $ # and useful when assigning chemical shifts to more than 1 conformation 
 ./bin/scaha tests/larmord_2KOC_pool.txt tests/observed_shifts_assigned_2KOC.txt --verbose --output=tests/assigned_shifts --parallel --nprocessors=4
 ```
