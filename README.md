@@ -36,15 +36,18 @@ Options:
 
 ## Examples
 ```shell
-$ # assign chemical shift contained in an assigned chemical shift data file based on larmord computed chemical shifts 
+$ # assign chemical shift contained in an assigned chemical shift data file based on LARMORD computed chemical shifts 
 $ # in testing mode the actual assigned chemical shift is included in the output
-./bin/scaha tests/larmord_2KOC_single.txt tests/observed_shifts_assigned_2KOC.txt --verbose --testing
+./bin/scaha tests/larmord_2KOC_single.txt tests/observed_shifts_assigned_2KOC.txt --verbose --testing --output=test/assigned_shifts
 $
 $ # assign chemical shift contained in a simple list assigned chemical shift peaks
 $ # in this mode, tests/observed_shifts_assigned_2KOC.txt should contain a single column of observed peak values
-./bin/scaha tests/larmord_2KOC_single.txt tests/observed_shifts_assigned_2KOC.txt --verbose
+./bin/scaha tests/larmord_2KOC_single.txt tests/observed_shifts_unassigned_peaks_2KOC.txt --verbose --output=test/assigned_shifts --output=test/assigned_shifts
+$
+$ # assign chemical shift contained in an assigned chemical shift data file based on LARMORD chemical shifts computed from a set of conformations (here 30 conformations)
+$ # in testing mode the actual assigned chemical shift is included in the output
+./bin/scaha tests/larmord_2KOC_pool.txt tests/observed_shifts_assigned_2KOC.txt --verbose --output=test/assigned_shifts
 ```
-
 ## Input (computed chemical shifts file)
 ### format
 _conformation, residue-number, residue-name, nucleus-type, cs-value, id-tag_
