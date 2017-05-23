@@ -1,7 +1,6 @@
 #!/usr/bin/env Rscript
 suppressPackageStartupMessages(library("optparse"))
 suppressPackageStartupMessages(library("plyr"))
-#suppressPackageStartupMessages(library("pracma"))
 suppressPackageStartupMessages(library("clue"))
 
 option_list <- list( 
@@ -16,7 +15,7 @@ option_list <- list(
   make_option(c("-v", "--verbose"), action="store_true", default=FALSE,
               help="print header and progress information [default %default]")
 )
-parser <- OptionParser(usage = "%prog [options] predicted_chemical_shifts chemical_shift_peaks accuracy_file", option_list=option_list)
+parser <- OptionParser(usage = "%prog [options] predicted_chemical_shifts chemical_shift_peaks", option_list=option_list)
 
 arguments <- parse_args(parser, positional_arguments = TRUE)
 opt <- arguments$options
