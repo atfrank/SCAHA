@@ -8,7 +8,7 @@ source("R/library.R")
 install_scaha_dependencies()
 ```
 
-## Usage manual
+## Usage Info
 ```shell
 $ bin/scaha -h
 
@@ -34,20 +34,6 @@ Options:
 		Show this help message and exit
 ```
 
-## Examples
-```shell
-$ # assign chemical shift contained in an assigned chemical shift data file based on LARMORD computed chemical shifts 
-$ # in testing mode the actual assigned chemical shift is included in the output
-./bin/scaha tests/larmord_2KOC_single.txt tests/observed_shifts_assigned_2KOC.txt --verbose --testing --output=test/assigned_shifts
-$
-$ # assign chemical shift contained in a simple list assigned chemical shift peaks
-$ # in this mode, tests/observed_shifts_assigned_2KOC.txt should contain a single column of observed peak values
-./bin/scaha tests/larmord_2KOC_single.txt tests/observed_shifts_unassigned_peaks_2KOC.txt --verbose --output=test/assigned_shifts --output=test/assigned_shifts
-$
-$ # assign chemical shift contained in an assigned chemical shift data file based on LARMORD chemical shifts computed from a set of conformations (here 30 conformations)
-$ # in testing mode the actual assigned chemical shift is included in the output
-./bin/scaha tests/larmord_2KOC_pool.txt tests/observed_shifts_assigned_2KOC.txt --verbose --output=test/assigned_shifts
-```
 ## Input (computed chemical shifts file)
 ### format
 _conformation, residue-number, residue-name, nucleus-type, cs-value, id-tag_
@@ -134,5 +120,23 @@ _cs-value_
 -1.09
 ...
 ...
+```
+
+## Examples
+```shell
+$ # assign chemical shift contained in an assigned chemical shift data file based on LARMORD computed chemical shifts 
+$ # in testing mode the actual assigned chemical shift is included in the output
+./bin/scaha tests/larmord_2KOC_single.txt tests/observed_shifts_assigned_2KOC.txt --verbose --testing --output=tests/assigned_shifts
+$
+$ # assign chemical shift contained in a simple list of unassigned chemical shift peaks
+$ # in this mode, tests/observed_shifts_assigned_2KOC.txt should contain a single column of observed peak values
+./bin/scaha tests/larmord_2KOC_single.txt tests/observed_shifts_unassigned_peaks_2KOC.txt --verbose --output=tests/assigned_shifts --output=test/assigned_shifts
+$
+$ # assign chemical shift contained in an assigned chemical shift data file based on LARMORD chemical shifts computed from a set of conformations (here 30 conformations)
+./bin/scaha tests/larmord_2KOC_pool.txt tests/observed_shifts_assigned_2KOC.txt --verbose --output=tests/assigned_shifts
+$ # same as above except scaha is executed in parallel mode
+$ # efficient if being executed in a mult-thread computing environment
+$ # and useful when assigning chemical shifts to more than 1 conformation 
+./bin/scaha tests/larmord_2KOC_pool.txt tests/observed_shifts_assigned_2KOC.txt --verbose --output=tests/assigned_shifts --parallel --nprocessors=4
 ```
 

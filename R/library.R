@@ -9,7 +9,8 @@ install_scaha_dependencies <- function(){
   # optparse: for writing neat Unix-like commandline R script
   # plyr: for ddply algorithm
   # clue: for solve_LSAP (Hungarian algorithm)
-  pkgs <- c("optparse", "plyr", "pracma", "clue")
+  # doParallel: for running in parallel
+  pkgs <- c("optparse", "plyr", "clue", "doParallel")
   for (pkg in pkgs){
     check_and_install(pkg)
   }
