@@ -36,10 +36,10 @@ load_unassigned_shifts <- function(unassgined_data_file, testing){
   unassgined_data <- read.table(unassgined_data_file, header=FALSE)
   # in testing mode expects a single column file
   # just in case user supplies truly unassigned peaks but sets testing to TRUE
-  if(ncol(unassgined_data)==1){testing <- FALSE}
+  if(ncol(unassgined_data) == 1){testing <- FALSE}
   # add appropiate colname names
-  if (!testing){colnames(unassgined_data) <- c("resname","resid","nucleus","cs","dummy")}
-  if (testing){colnames(unassgined_data) <- c("cs")}
+  if (ncol(unassgined_data) == 5){colnames(unassgined_data) <- c("resname","resid","nucleus","cs","dummy")}
+  if (ncol(unassgined_data) ==  1){colnames(unassgined_data) <- c("cs")}
   return (unassgined_data)
 }
 
@@ -150,9 +150,6 @@ get_assignments <- function(assgined_computed_cs, unassgined_data=unassgined_dat
 			
 			# output assignments to a text file
 			write.table(tmp, file = paste(output, "_", i, "_", conformation, ".txt", sep = ""), quote = FALSE, row.names = FALSE, col.names = FALSE)
-			
-			# output probability matrix as an .RData object
-			write.table(assgined_computed_cs_prob, file = paste(output, "_prob_", i, "_", conformation, ".RData", sep = ""), quote = FALSE, row.names = FALSE, col.names = FALSE)
 			if (verbose){print(tmp)}			
 		}    
   }

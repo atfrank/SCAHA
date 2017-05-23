@@ -9,7 +9,7 @@ option_list <- list(
               help="run assignment in parallel [default %default]"),
   make_option(c("-n", "--nprocessors"), type="integer", default=18,
               help="number of processor to use for parallel processing [default %default]"),
-  make_option(c("-o", "--output"), type="character",default="assigned_shifts",
+  make_option(c("-o", "--output"), type="character",default="tests/assigned_shifts",
               help="output prefix name [default %default]"),
   make_option(c("-t", "--testing"), action="store_true", default=FALSE,
               help="run in testing mode; correct assignment are known and provided [default %default]"),                            
