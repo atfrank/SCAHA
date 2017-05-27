@@ -572,7 +572,51 @@ count_perfect_assignments <- function(data){
   # count how many perfect assignments for a given
   n_perfect <- sum(data$diff==0)
   fraction_perfect <- mean(data$diff==0)
-  return(data.frame(n_perfect=n_perfect, fraction_perfect=fraction_perfect))
+  n_less_than_error <- sum(abs(data$diff) < abs(data$error))
+  fraction_less_than_error <- mean(abs(data$diff) < abs(data$error))
+  return(data.frame(n_perfect=n_perfect, fraction_perfect=fraction_perfect, n_less_than=n_less_than_error, fraction_less_than=fraction_less_than_error))
+}
+
+summarize_perfect_assignment_accuracy <- function(data, sets=c("all", "training", "testing"), grps = c("luc", "ruc"), larmord_train_rnas = unlist(strsplit("1KKA 1L1W 1LC6 1LDZ 1NC0 1OW9 1PJY 1R7W 1R7Z 1YSV 2FDT 2GM0 2JXQ 2JXS 2K3Z 2K41 2KOC 2KYD 2LBJ 2LBL 2LDL 2LDT 2LHP 2LI4 2LK3 2LP9 2LPA 2LU0 2LUB 2LV0 2RN1 2Y95 4A4S 4A4T 4A4U", " ")), ramsey_train_rnas =  unlist(strsplit("1LC6 1LDZ 1NC0 1OW9 1PJY 1R7W 1R7Z 1UUU 1YSV 1Z2J 2GM0 2JTP 2JXQ 2JXS 2K3Z 2K41 2KOC 2L3E 2LDL", " "))){
+  # returns a summarize of the analysis of fraction of assignments that were perfect and within the accuracy of the predictors
+  rnas_sets <- get_rna_sets()
+  larmord_train_rnas <- rnas_sets$all[rnas_sets$all %in%larmord_train_rnas]
+  ramsey_train_rnas <- rnas_sets$all[rnas_sets$all %in%ramsey_train_rnas]
+  
+  # initialize object that will store final results
+  fractions <- NULL
+  
+  for (i in seq_along(sets)){
+    set <- sets[i]
+    for (j  in seq_along(grps)){
+      grp <- grps[j]
+      rnas <- rnas_sets$all
+      if(set == "training"){
+        if (grp %in% c("luu","luc")){
+          rnas <- rnas_sets$all[(rnas_sets$all %in% larmord_train_rnas)]
+        } else {
+          rnas <- rnas_sets$all[(rnas_sets$all %in% ramsey_train_rnas)]
+        }
+      }
+      # if testing set
+      if(set == "testing"){
+        if (grp %in% c("luu","luc")){
+          rnas <- rnas_sets$all[!(rnas_sets$all %in% larmord_train_rnas)]
+        } else {
+          rnas <- rnas_sets$all[!(rnas_sets$all %in% ramsey_train_rnas)]
+        }
+      }
+      
+      # get fraction 
+      fraction <- perfect_assignments(data[[grp]])
+      fraction$set <- set
+      fraction$grp <- grp
+      fraction <- fraction[(fraction$id %in% rnas), ]
+      ifelse(is.null(fractions), fractions <- fraction, fractions <- rbind(fractions, fraction))
+      cat(sprintf("%s %s %4.3f %4.3f\n", set, grp, median(fraction$fraction_perfect), median(fraction$fraction_less_than)))
+    }
+  }
+  return(fractions)
 }
 
 summarize_identification_accuracy <- function(native_rmsd_cutoff = "2.5", matrices = c("actual_v_assigned_rmsd_1", "assigned_v_predicted_rmsd_1", "actual_v_predicted_rmsd_1")){

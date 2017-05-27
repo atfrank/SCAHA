@@ -1,5 +1,5 @@
 # 0 - goto working directory
-setwd("~/Desktop/summer-papers/analysis/")
+setwd("~/GitSoftware/SCAHA/manuscript/data_analysis/")
 
 # 1 - source custom function
 source("analysis_functions.R")
@@ -57,7 +57,6 @@ dev.off()
 summarize_identification_accuracy(matrices = c("actual_v_assigned_rmsd_1", "assigned_v_predicted_rmsd_1", "actual_v_predicted_rmsd_1"))
 summarize_identification_accuracy(matrices = c("actual_v_assigned_rmsd_5", "assigned_v_predicted_rmsd_5", "actual_v_predicted_rmsd_5"))
 
-
 # Get timings
 timings <- make_timing_plot()
 timings[,c("id", "bmrb", "conformers", "n_actual", "n_pred")]
@@ -71,6 +70,8 @@ plot_rmsd_correlations(data, grp = "ruc", corel_type = "rho", set = "all", col =
 plot_rmsd_correlations(data, grp = "ruc", corel_type = "rho", set = "training", col = "blue", addplot = TRUE)
 plot_rmsd_correlations(data, grp = "ruc", corel_type = "rho", set = "testing", col = "red", addplot = TRUE)
 
+# fractions
+fractions <- summarize_perfect_assignment_accuracy(data)
 
 # correlation distributions
 save_correlation_boxplots(data, ref = "assigned", comp = "actual")
