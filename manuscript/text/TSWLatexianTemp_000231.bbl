@@ -1,0 +1,306 @@
+\providecommand{\latin}[1]{#1}
+\providecommand*\mcitethebibliography{\thebibliography}
+\csname @ifundefined\endcsname{endmcitethebibliography}
+  {\let\endmcitethebibliography\endthebibliography}{}
+\begin{mcitethebibliography}{33}
+\providecommand*\natexlab[1]{#1}
+\providecommand*\mciteSetBstSublistMode[1]{}
+\providecommand*\mciteSetBstMaxWidthForm[2]{}
+\providecommand*\mciteBstWouldAddEndPuncttrue
+  {\def\EndOfBibitem{\unskip.}}
+\providecommand*\mciteBstWouldAddEndPunctfalse
+  {\let\EndOfBibitem\relax}
+\providecommand*\mciteSetBstMidEndSepPunct[3]{}
+\providecommand*\mciteSetBstSublistLabelBeginEnd[3]{}
+\providecommand*\EndOfBibitem{}
+\mciteSetBstSublistMode{f}
+\mciteSetBstMaxWidthForm{subitem}{(\alph{mcitesubitemcount})}
+\mciteSetBstSublistLabelBeginEnd
+  {\mcitemaxwidthsubitemform\space}
+  {\relax}
+  {\relax}
+
+\bibitem[Consortium(2012)]{encode2012integrated}
+Consortium,~E.~P. An integrated encyclopedia of DNA elements in the human
+  genome. \emph{Nature} \textbf{2012}, \emph{489}, 57--74\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Cooper \latin{et~al.}(2009)Cooper, Wan, and Dreyfuss]{cooper2009rna}
+Cooper,~T.~A.; Wan,~L.; Dreyfuss,~G. RNA and Disease. \emph{Cell}
+  \textbf{2009}, \emph{136}, 777--793\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Burke \latin{et~al.}(2012)Burke, Sashital, Zuo, Wang, and
+  Butcher]{burke2012structure}
+Burke,~J.~E.; Sashital,~D.~G.; Zuo,~X.; Wang,~Y.-X.; Butcher,~S.~E. Structure
+  of the Yeast U2/U6 SnRNA Complex. \emph{RNA} \textbf{2012}, \emph{18},
+  673--683\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Lee \latin{et~al.}(2016)Lee, Cornilescu, Dashti, Eghbalnia, Tonelli,
+  Westler, Butcher, Henzler-Wildman, and Markley]{lee2016integrative}
+Lee,~W.; Cornilescu,~G.; Dashti,~H.; Eghbalnia,~H.~R.; Tonelli,~M.;
+  Westler,~W.~M.; Butcher,~S.~E.; Henzler-Wildman,~K.~A.; Markley,~J.~L.
+  Integrative NMR for Biomolecular Research. \emph{Journal of Biomolecular NMR}
+  \textbf{2016}, \emph{64}, 307--332\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Sripakdeevong \latin{et~al.}(2014)Sripakdeevong, Cevec, Chang, Erat,
+  Ziegeler, Zhao, Fox, Gao, Kennedy, Kierzek, Nikonowicz, Schwalbe, Sigel,
+  Turner, and Das]{sripakdeevong2014structure}
+Sripakdeevong,~P.; Cevec,~M.; Chang,~A.~T.; Erat,~M.~C.; Ziegeler,~M.;
+  Zhao,~Q.; Fox,~G.~E.; Gao,~X.; Kennedy,~S.~D.; Kierzek,~R.;
+  Nikonowicz,~E.~P.; Schwalbe,~H.; Sigel,~R. K.~O.; Turner,~D.~H.; Das,~R.
+  Structure Determination of Noncanonical RNA Motifs Guided by 1H NMR Chemical
+  Shifts. \emph{Nature Methods} \textbf{2014}, \emph{11}, 413--416\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Meiler and Baker(2003)Meiler, and Baker]{meiler2003rapid}
+Meiler,~J.; Baker,~D. Rapid Protein Fold Determination Using Unassigned NMR
+  Data. \emph{Proceedings of the National Academy of Sciences} \textbf{2003},
+  \emph{100}, 15404--15409\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Bermejo and Llin{\'a}s(2008)Bermejo, and
+  Llin{\'a}s]{bermejo2008deuterated}
+Bermejo,~G.~A.; Llin{\'a}s,~M. Deuterated Protein Folds Obtained Directly from
+  Unassigned NOE Data. \emph{Journal of the American Chemical Society}
+  \textbf{2008}, \emph{130}, 3797\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Courtney \latin{et~al.}(2015)Courtney, Ye, Nesbitt, Tang, Tuttle,
+  Watt, Nuzzio, Sperling, Comellas, Peterson, \latin{et~al.}
+  others]{courtney2015experimental}
+others,, \latin{et~al.}  Experimental Protein Structure Verification by Scoring
+  with a Single, Unassigned NMR Spectrum. \emph{Structure} \textbf{2015},
+  \emph{23}, 1958--1966\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Hart \latin{et~al.}(2008)Hart, Kennedy, Mathews, and
+  Turner]{hart2008nmr}
+Hart,~J.~M.; Kennedy,~S.~D.; Mathews,~D.~H.; Turner,~D.~H. NMR-Assisted
+  Prediction of RNA Secondary Structure: Identification of a Probable
+  Pseudoknot in the Coding Region of an R2 Retrotransposon. \emph{Journal of
+  the American Chemical Society} \textbf{2008}, \emph{130}, 10233--10239\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Chen \latin{et~al.}(2015)Chen, Bellaousov, Tubbs, Kennedy, Lopez,
+  Mathews, and Turner]{chen2015nuclear}
+Chen,~J.~L.; Bellaousov,~S.; Tubbs,~J.~D.; Kennedy,~S.~D.; Lopez,~M.~J.;
+  Mathews,~D.~H.; Turner,~D.~H. Nuclear Magnetic Resonance-Assisted Prediction
+  of Secondary Structure for RNA: Incorporation of Direction-Dependent Chemical
+  Shift Constraints. \emph{Biochemistry} \textbf{2015}, \emph{54}, 6769\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Kuhn(1955)]{kuhn1955hungarian}
+Kuhn,~H.~W. The Hungarian Method for the Assignment Problem. \emph{Naval
+  Research Logistics Quarterly} \textbf{1955}, \emph{2}, 83--97\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Munkres(1957)]{munkres1957algorithms}
+Munkres,~J. Algorithms for the Assignment and Transportation Problems.
+  \emph{Journal of the Society for Industrial and Applied Mathematics}
+  \textbf{1957}, \emph{5}, 32--38\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Bernstein \latin{et~al.}(1977)Bernstein, Koetzle, Williams, Meyer,
+  Brice, Rodgers, Kennard, Shimanouchi, and Tasumi]{bernstein1977protein}
+Bernstein,~F.~C.; Koetzle,~T.~F.; Williams,~G.~J.; Meyer,~E.~F.; Brice,~M.~D.;
+  Rodgers,~J.~R.; Kennard,~O.; Shimanouchi,~T.; Tasumi,~M. The Protein Data
+  Bank. \emph{European Journal of Biochemistry} \textbf{1977}, \emph{80},
+  319--324\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Ulrich \latin{et~al.}(2008)Ulrich, Akutsu, Doreleijers, Harano,
+  Ioannidis, Lin, Livny, Mading, Maziuk, and Miller]{ulrich2008biomagresbank}
+Ulrich,~E.~L.; Akutsu,~H.; Doreleijers,~J.~F.; Harano,~Y.; Ioannidis,~Y.~E.;
+  Lin,~J.; Livny,~M.; Mading,~S.; Maziuk,~D.; Miller,~Z. BioMagResBank.
+  \emph{Nucleic Acids Research} \textbf{2008}, \emph{36}, D402--D408\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Parisien and Major(2008)Parisien, and Major]{parisien2008mc}
+Parisien,~M.; Major,~F. The MC-Fold and MC-Sym Pipeline Infers RNA Structure
+  from Sequence Data. \emph{Nature} \textbf{2008}, \emph{452}, 51--55\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Das \latin{et~al.}(2010)Das, Karanicolas, and Baker]{das2010atomic}
+Das,~R.; Karanicolas,~J.; Baker,~D. Atomic Accuracy in Predicting and Designing
+  Noncanonical RNA Structure. \emph{Nature Methods} \textbf{2010}, \emph{7},
+  291--294\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Brooks \latin{et~al.}(1983)Brooks, Bruccoleri, Olafson, and
+  Karplus]{brooks1983charmm}
+Brooks,~B.; Bruccoleri,~R.; Olafson,~B.; Karplus,~M. {CHARMM: A Program for
+  Macromolecular Energy, Minimization, and Dynamics Calculations}.
+  \emph{Journal of Computational Chemistry} \textbf{1983}, \emph{4},
+  187--217\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Lee \latin{et~al.}(2002)Lee, Salsbury~Jr, and
+  Brooks~III]{lee2002novel}
+Lee,~M.~S.; Salsbury~Jr,~F.~R.; Brooks~III,~C.~L. Novel Generalized Born
+  Methods. \emph{The Journal of Chemical Physics} \textbf{2002}, \emph{116},
+  10606--10614\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Lee \latin{et~al.}(2003)Lee, Feig, Salsbury, and Brooks]{lee2003new}
+Lee,~M.~S.; Feig,~M.; Salsbury,~F.~R.; Brooks,~C.~L. New Analytic Approximation
+  to the Standard Molecular Volume Definition and Its Application to
+  Generalized Born Calculations. \emph{Journal of Computational Chemistry}
+  \textbf{2003}, \emph{24}, 1348--1356\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Chocholou{\v{s}}ov{\'a} and Feig(2006)Chocholou{\v{s}}ov{\'a}, and
+  Feig]{chocholouvsova2006implicit}
+Chocholou{\v{s}}ov{\'a},~J.; Feig,~M. Implicit Solvent Simulations of DNA and
+  DNA- Protein Complexes: Agreement with Explicit Solvent vs Experiment.
+  \emph{The Journal of Physical Chemistry B} \textbf{2006}, \emph{110},
+  17240--17251\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Hornik(2005)]{hornik2005a}
+Hornik,~K. A {CLUE} for {CLUster Ensembles}. \emph{Journal of Statistical
+  Software} \textbf{2005}, \emph{14}\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Frank \latin{et~al.}(2013)Frank, Bae, and
+  Stelzer]{frank2013prediction}
+Frank,~A.~T.; Bae,~S.-H.; Stelzer,~A.~C. Prediction of RNA 1H and 13C Chemical
+  Shifts: A Structure Based Approach. \emph{J. Phys. Chem. B} \textbf{2013},
+  \emph{117}, 13497--13506\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Frank \latin{et~al.}(2014)Frank, Law, and Brooks~III]{frank2014simple}
+Frank,~A.~T.; Law,~S.~M.; Brooks~III,~C.~L. A Simple and Fast Approach for
+  Predicting 1H and 13C Chemical Shifts: Toward Chemical Shift-Guided
+  Simulations of RNA. \emph{The Journal of Physical Chemistry B} \textbf{2014},
+  \emph{118}, 12168--12175\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Sich \latin{et~al.}(1997)Sich, Ohlenschl{\"a}ger, Ramachandran,
+  G{\"o}rlach, and Brown]{sich1997structure}
+Sich,~C.; Ohlenschl{\"a}ger,~O.; Ramachandran,~R.; G{\"o}rlach,~M.;
+  Brown,~L.~R. Structure of an RNA Hairpin Loop with a 5'--CGUUUCG--3' Loop
+  Motif by Heteronuclear NMR Spectroscopy and Distance Geometry.
+  \emph{Biochemistry} \textbf{1997}, \emph{36}, 13989--14002\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Szewczak and Moore(1995)Szewczak, and Moore]{szewczak1995sarcin}
+Szewczak,~A.; Moore,~P. The Sarcin/Ricin Loop, a Modular RNA. \emph{Journal of
+  Molecular Biology} \textbf{1995}, \emph{247}, 81--98\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Frank(2016)]{frank2016can}
+Frank,~A.~T. Can Holo NMR Chemical Shifts be Directly Used to Resolve
+  RNA--Ligand Poses? \emph{Journal of Chemical Information and Modeling}
+  \textbf{2016}, \emph{56}, 368--376\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Aeschbacher \latin{et~al.}(2012)Aeschbacher, Schubert, and
+  Allain]{aeschbacher2012procedure}
+Aeschbacher,~T.; Schubert,~M.; Allain,~F. H.-T. A Procedure to Validate and
+  Correct the 13C Chemical Shift Calibration of RNA Datasets. \emph{Journal of
+  Biomolecular NMR} \textbf{2012}, \emph{52}, 179--190\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Martin \latin{et~al.}(2011)Martin, Quinn, and
+  Park]{martin2011mcmcpack}
+Martin,~A.~D.; Quinn,~K.~M.; Park,~J.~H. Mcmcpack: Markov chain monte carlo in
+  r. \textbf{2011}, \relax
+\mciteBstWouldAddEndPunctfalse
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Venkatraman \latin{et~al.}(2010)Venkatraman, P{\'e}rez-Nueno,
+  Mavridis, and Ritchie]{venkatraman2010comprehensive}
+Venkatraman,~V.; P{\'e}rez-Nueno,~V.~I.; Mavridis,~L.; Ritchie,~D.~W.
+  Comprehensive Comparison of Ligand-Based Virtual Screening Tools Against the
+  DUD Data Set Reveals Limitations of Current 3D Methods. \emph{Journal of
+  Chemical Information and Modeling} \textbf{2010}, \emph{50}, 2079--2093\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Alford \latin{et~al.}(2017)Alford, Leaver-Fay, Jeliazkov, O'Meara,
+  DiMaio, Park, Shapovalov, Renfrew, Mulligan, Kappel, Labonte, Pacella,
+  Bonneau, Bradley, Dunbrack, Das, Baker, Kuhlman, Kortemme, and
+  Gray]{alford2017rosetta}
+Alford,~R.~F. \latin{et~al.}  The Rosetta All-Atom Energy Function for
+  Macromolecular Modeling and Design. \emph{Journal of Chemical Theory and
+  Computation} \textbf{2017}, acs.jctc.7b00125\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Swails \latin{et~al.}(2015)Swails, Zhu, He, and Case]{swails2015afnmr}
+Swails,~J.; Zhu,~T.; He,~X.; Case,~D.~A. AFNMR: Automated Fragmentation Quantum
+  Mechanical Calculation of NMR Chemical Shifts for Biomolecules. \emph{Journal
+  of Biomolecular NMR} \textbf{2015}, \emph{63}, 125--139\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\bibitem[Date and Nagi(2016)Date, and Nagi]{date2016gpu}
+Date,~K.; Nagi,~R. GPU-Accelerated Hungarian Algorithms for the Linear
+  Assignment Problem. \emph{Parallel Computing} \textbf{2016}, \emph{57},
+  52--72\relax
+\mciteBstWouldAddEndPuncttrue
+\mciteSetBstMidEndSepPunct{\mcitedefaultmidpunct}
+{\mcitedefaultendpunct}{\mcitedefaultseppunct}\relax
+\EndOfBibitem
+\end{mcitethebibliography}
