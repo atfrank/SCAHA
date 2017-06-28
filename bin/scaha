@@ -33,7 +33,6 @@ if(length(arguments$args) != 2) {
   }
   
   # load library and our custom functions
-  library(pracma)
   library(plyr)
   
   # library SCAHA R library
