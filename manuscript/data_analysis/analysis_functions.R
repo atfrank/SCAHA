@@ -880,5 +880,5 @@ make_sensitivity_boxplots <- function(s, fname = "Rplot.pdf", formula = nslr~box
     abline(h=0.5, lwd = "2", lty = 2, col = "red")
   }
   dev.off()
-  return(list(box_all=p_training, box_train = p_training, box_testing = p_testing))
+  return(list(box_all=p_all, box_train = p_training, box_testing = p_testing))
 }
