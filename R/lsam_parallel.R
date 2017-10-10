@@ -17,9 +17,7 @@ lsam_classical <- function(mat){
   for(j in seq(1, n)){
     dual_col <- c(dual_col, min(mat[,j] - dual_row))
   }
-  print(dual_row)
-  print(dual_col)
-  while(TRUE){
+  check <- function(){
     match_count = 0 # check
     cover_row <- rep(0, n)
     cover_col <- rep(0, n)
@@ -32,76 +30,78 @@ lsam_classical <- function(mat){
       }
     }
     if(match_count == n)
-      break
-    st <- c()
-    # stack
-    for(i in seq(1, n)){
-      if(cover_row[i] == 0)
-        st <- c(stack, i)
-      adj_list <- vector(mode='list',length=n)
-      for(j in seq(1, n)){
-        if(mat[i, j] - dual_row[j] == 0)
-          adj_list[i] <- c(adj_list[i], j)
-      }
-    }
-    while(!is.null(st)){ # search
-      i <- tail(st, n=1) # st.top
-      st <- head(st, -1) # st.pop
-      while(!is.null(adj_list[i])){
-        j <- adj_list[i][[0]]
-        adj[[i]] <- NULL
-        i_new <- assign_col[j]
-        if(i_new == i)
-          next()
-        if(cover_col[j] == 0){
-          prev_col[j] = i
-          if(i_new == -1){
-            # Augment
-            # Procedure for augmenting current assignments by 1
-            c_cur <- j
-            r_cur <- -1
-            while(c_cur != -1){
-              r_cur <- prev_col[c_cur]
-              assign_row[r_cur] <- c_cur
-              assign_col[c_cur] <- r_cur
-              c_cur <- prev_row[r_cur]
-            }
-            # Augment End
-            # TODO goto check 
-          }
-          else{
-            st <- c(st, i_new)
-            prev_row[i_new] <- j
-            cover_row <- 0
-            cover_col <- 1
-          }
-        }
-      }
-    }
-    # Update
-    # Procedure for updating the dual variables
-    theta <- Inf
-    for(i in seq(1, n)){
-      if(cover_row[i] == 0){
+      return(assign_row) #Exit
+    st <- c() # Empty stack
+    search <- function(){
+      adj_list <- vector(mode='list',length=n) # initialize adjacency list
+      for(i in seq(1, n)){
+        if(cover_row[i] == 0)
+          st <- c(st, i)
         for(j in seq(1, n)){
-          if(cover_col == 0){
-            theta <- min(theta, mat[i, j] - dual_row[i] - dual_col[j])
+          if(mat[i, j] - dual_row[i] - dual_col[j] == 0)
+            adj_list[[i]] <- c(adj_list[[i]], j)
+        }
+      }
+      while(length(st)){ # search
+        i <- tail(st, n=1) # st.top
+        st <- head(st, -1) # st.pop
+        while(!is.null(adj_list[[i]])){
+          j <- adj_list[[i]][1]
+          adj_list[[i]] <- tail(adj_list[[i]], -1)
+          i_new <- assign_col[j]
+          if(i_new == i)
+            next()
+          if(cover_col[j] == 0){
+            prev_col[j] = i
+            if(i_new == -1){
+              # Augment
+              # Procedure for augmenting current assignments by 1
+              c_cur <- j
+              r_cur <- -1
+              while(c_cur != -1){
+                r_cur <- prev_col[c_cur]
+                assign_row[r_cur] <- c_cur
+                assign_col[c_cur] <- r_cur
+                c_cur <- prev_row[r_cur]
+              }
+              # Augment End
+              check() 
+            }
+            else{
+              st <- c(st, i_new)
+              prev_row[i_new] <- j
+              cover_row <- 0
+              cover_col <- 1
+            }
           }
         }
       }
-      for(k in seq(1, n)){
-        if(cover_row[k] == 0){
-          dual_row[k] <- dual_row[k] + theta / 2 * ifelse(cover_row[k] == 0, 1, -1)
+      # Update
+      # Procedure for updating the dual variables
+      theta <- Inf
+      for(i in seq(1, n)){
+        if(cover_row[i] == 0){
+          for(j in seq(1, n)){
+            if(cover_col == 0){
+              theta <- min(theta, mat[i, j] - dual_row[i] - dual_col[j])
+            }
+          }
         }
-        if(cover_col[k] == 0){
-          dual_col[k] <- dual_col[k] + theta / 2 * ifelse(cover_col[k] == 0, 1, -1)
+        for(k in seq(1, n)){
+          if(cover_row[k] == 0){
+            dual_row[k] <- dual_row[k] + theta / 2 * ifelse(cover_row[k] == 0, 1, -1)
+          }
+          if(cover_col[k] == 0){
+            dual_col[k] <- dual_col[k] + theta / 2 * ifelse(cover_col[k] == 0, 1, -1)
+          }
         }
       }
+      #Update end
+      search()
     }
-    #Update end
-    # TODO goto search
+    search()
   }
-  return(assign_row)
+  return(check())
 }
 
 lsam_tree <- function(){
