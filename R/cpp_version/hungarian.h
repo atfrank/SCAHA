@@ -25,7 +25,7 @@ class Hungarian {
         memset(ly, 0, sizeof(ly));
         for (int x = 0; x < n; x++)
             for (int y = 0; y < n; y++)
-                lx[x] = min(lx[x], cost[x][y]);
+                lx[x] = max(lx[x], cost[x][y]);
     }
 
     void update_labels()
@@ -154,8 +154,12 @@ public:
      memset(yx, -1, sizeof(yx));
      init_labels(); //step 0
      augment(); //steps 1-3
-     for (int x = 0; x < n; x++) //forming answer there
-     ret += cost[x][xy[x]];
+     for (int x = 0; x < n; x++){
+       ret += cost[x][xy[x]];
+      //  for(int y = 0; y < n; y++){
+      //    cout << cost[x][y] << ' ';
+      //  }
+     } //forming answer there
      return ret;
     }
     void print_assignment(){

@@ -18,5 +18,5 @@ int main(){
   }
   Hungarian h(std::move(a), n);
   cout << h.hungarian() << endl;
-  h.print_assignment();
+  //h.print_assignment();
 }
