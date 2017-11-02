@@ -1,5 +1,5 @@
 library('clue')
-dyn.load("hungarian.so")
+source('hungarian.R')
 
 cost_mat <- function(x, y){
   xmat <- matrix(x,nrow=length(y),ncol=length(x),byrow=T)
@@ -28,7 +28,6 @@ test_hungarian <- function(){
   }
   
   start.time <- Sys.time()
-  #a<-.C("hungarian", n=as.integer(dim_mat), x=as.integer(c(t(mat))), p=integer(dim_mat))$p + 1
   a<-hungarian(mat)
   end.time <- Sys.time()
   time.taken <- end.time - start.time
@@ -39,9 +38,11 @@ test_hungarian <- function(){
   time1.taken <- end.time - start.time
   
   #print(a)
+  print("Custom Hungarian Algorithm:")
   print(time.taken)
   print(get_cost(a))
   #print(b)
+  print("solve_LSAP:")
   print(time1.taken)
   print(get_cost(b))
 }
