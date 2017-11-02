@@ -15,8 +15,7 @@ hungarian <-
     
     if(maximum) x <- max(x) - x
     
-    #TODO better support of double
-    # idea: multiply all values by 1000 (3 decimal places), go back to int
+    # multiply all values by 1000 (3 decimal places accuracy)
     out <- .C("hungarian", n=as.integer(nc), x=as.integer(round(c(t(x)) * 1000)), p=integer(nc))$p + 1
     out <- out[seq_len(nr)]
     class(out) <- "hungarian"
