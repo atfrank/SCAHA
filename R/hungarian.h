@@ -162,6 +162,9 @@ int run()
  augment(); //steps 1-3
  for (int x = 0; x < n; x++){
    ret += get_cost(x, xy[x]);
+   for(int y = 0; y < n; y++){
+     //printf("%d ", get_cost(x, y));
+   }
  }
  return ret;
 }
