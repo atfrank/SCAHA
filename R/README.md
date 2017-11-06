@@ -5,7 +5,7 @@ https://www.topcoder.com/community/data-science/data-science-tutorials/assignmen
 
 All commands assume you are running in $HOME/R.
 
-Supports doubles (up to three decimal places) and cost matrices with number of columns >= number of rows.
+Supports doubles (up to two decimal places) and cost matrices with number of columns >= number of rows.
 
 Testing the Hungarian algorithm:
 

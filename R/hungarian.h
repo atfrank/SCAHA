@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <string.h>
-#define N 1000 //max number of vertices in one part
+#define N 10000 //max number of vertices in one part
 #define INF 100000000 //just infinity
 #define max(a,b) \
    ({ __typeof__ (a) _a = (a); \

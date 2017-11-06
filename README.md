@@ -130,7 +130,7 @@ $ # in testing mode the actual assigned chemical shift is included in the output
 $
 $ # assign chemical shift contained in a simple list of unassigned chemical shift peaks
 $ # in this mode, tests/observed_shifts_assigned_2KOC.txt should contain a single column of observed peak values
-./bin/scaha tests/larmord_2KOC_single.txt tests/observed_shifts_unassigned_peaks_2KOC.txt --verbose --output=tests/assigned_shifts --output=test/assigned_shifts
+./bin/scaha tests/larmord_2KOC_single.txt tests/observed_shifts_unassigned_peaks_2KOC.txt --verbose --output=tests/assigned_shifts --output=tests/assigned_shifts
 $
 $ # assign chemical shift contained in an assigned chemical shift data file based on LARMORD chemical shifts computed from a set of conformations (here 30 conformations)
 ./bin/scaha tests/larmord_2KOC_pool.txt tests/observed_shifts_assigned_2KOC.txt --verbose --output=tests/assigned_shifts

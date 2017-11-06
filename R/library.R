@@ -1,3 +1,4 @@
+source('R/hungarian.R')
 # Functions
 check_and_install <- function(pkg){
   # check if package is already installed
@@ -70,10 +71,13 @@ assign <- function(x, y, z=NULL){
   # should I use a weighted cost matrix or not (not yet tested)
   if (is.null(z)){
 		# use the Hungarian algorithm implemented in solve_LSAP
-    a <- solve_LSAP(costmat)
+    # a <- solve_LSAP(costmat)
+    # use custom Hungarian algorithm
+    a <- hungarian(costmat)
   } else {
 		zmat <- matrix(1/z,nrow=length(y),ncol=length(x),byrow=T)
-		a <- solve_LSAP(costmat*zmat)  
+		# a <- solve_LSAP(costmat*zmat)  
+		a <- hungarian(costmat*zmat)
   }
   
   # make list containing the raw assignments, assignment matrix, and cost matrix

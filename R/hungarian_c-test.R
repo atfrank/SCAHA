@@ -1,5 +1,5 @@
 library('clue')
-source('hungarian.R')
+source('hungarian-test.R')
 
 cost_mat <- function(x, y){
   xmat <- matrix(x,nrow=length(y),ncol=length(x),byrow=T)

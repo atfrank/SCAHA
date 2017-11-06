@@ -1,4 +1,4 @@
-dyn.load("R/hungarian.so")
+dyn.load("hungarian.so")
 
 hungarian <-
   function(x, maximum = FALSE)
