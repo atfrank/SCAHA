@@ -16,9 +16,8 @@ generate_mat <- function(n){
 
 test_hungarian <- function(){
   dim_mat<-1000
-  mat<-generate_mat(dim_mat) # strange bug, works if write file and used read file, but not from direct matrix
-  write.table(mat, file="test.txt", row.names = FALSE, col.names = FALSE)
-  #mat<-as.matrix(read.table(file="test.txt"))
+  mat<-generate_mat(dim_mat) 
+  #write.table(mat, file="test.txt", row.names = FALSE, col.names = FALSE)
   colnames(mat) <- NULL
   get_cost <- function(xy){
     sum = 0

@@ -1,4 +1,3 @@
-source('R/hungarian.R')
 # Functions
 check_and_install <- function(pkg){
   # check if package is already installed
@@ -57,7 +56,7 @@ duplicate_unassigned_data <- function(unassgined_data, assgined_computed_cs){
   return(unassgined_data)
 }
 
-assign <- function(x, y, z=NULL){
+assign <- function(x, y, z=NULL, custom = FALSE){
   suppressPackageStartupMessages(require("clue"))
   # assigns elements in y to elements in x 
   # Input -- x (vector): e.g., chemical shifts 
@@ -70,14 +69,24 @@ assign <- function(x, y, z=NULL){
   
   # should I use a weighted cost matrix or not (not yet tested)
   if (is.null(z)){
-		# use the Hungarian algorithm implemented in solve_LSAP
-    # a <- solve_LSAP(costmat)
-    # use custom Hungarian algorithm
-    a <- hungarian(costmat)
+		if(custom){
+      # use custom Hungarian algorithm
+      a <- hungarian(costmat)
+    }
+    else{
+      # use the Hungarian algorithm implemented in solve_LSAP
+      a <- solve_LSAP(costmat)
+    }
   } else {
 		zmat <- matrix(1/z,nrow=length(y),ncol=length(x),byrow=T)
-		# a <- solve_LSAP(costmat*zmat)  
-		a <- hungarian(costmat*zmat)
+		if(custom){
+		  # use custom Hungarian algorithm
+		  a <- hungarian(costmat * zmat)
+		}
+		else{
+		  # use the Hungarian algorithm implemented in solve_LSAP
+		  a <- solve_LSAP(costmat * zmat)
+		}
   }
   
   # make list containing the raw assignments, assignment matrix, and cost matrix
@@ -100,7 +109,7 @@ get_assignment_cost <- function(a, costmat){
   return(cost)
 }
 
-get_assignments <- function(assgined_computed_cs, unassgined_data=unassgined_data, testing=FALSE, output=output, weighted=FALSE, iter=1, freq_output=1, scale=0.0){
+get_assignments <- function(assgined_computed_cs, unassgined_data=unassgined_data, testing=FALSE, output=output, weighted=FALSE, iter=1, freq_output=1, scale=0.0, custom = FALSE){
   # Assign Peaks Using the Hungarian Algorithm 
   # Input  -- assgined_computed_cs (dataframe): assigned computed chemical shifts (must contain columns: c("resid", "resname", "nucleus", "cs", "error"))
   # Input  -- unassgined_data (dataframe): unassigned chemical shift peak (expect this data under column named c("cs"))
@@ -126,9 +135,9 @@ get_assignments <- function(assgined_computed_cs, unassgined_data=unassgined_dat
   for(i in 1:iter){
     # do actual assignment
     if (weighted){      
-    	a <- assign(unassgined_data_only, assgined_computed_cs$cs, z=assgined_computed_cs$error)
+    	a <- assign(unassgined_data_only, assgined_computed_cs$cs, z=assgined_computed_cs$error, custom = custom)
     } else {
-    	a <- assign(unassgined_data_only, assgined_computed_cs$cs)
+    	a <- assign(unassgined_data_only, assgined_computed_cs$cs, custom = custom)
     }
     # store a probablity matrix
     prob <- prob + a$a_mat
@@ -161,7 +170,7 @@ get_assignments <- function(assgined_computed_cs, unassgined_data=unassgined_dat
   return(TRUE)
 }
 
-SCAHA <- function(assgined_computed_cs_filename="data/predicted_CS_table_test_clean.txt", unassgined_data=unassgined_data, testing=FALSE, iter=1, freq_output = 1, scale=1, output=output, parallel = FALSE, weighted=FALSE, conformation_one = FALSE){
+SCAHA <- function(assgined_computed_cs_filename="data/predicted_CS_table_test_clean.txt", unassgined_data=unassgined_data, testing=FALSE, iter=1, freq_output = 1, scale=1, output=output, parallel = FALSE, weighted=FALSE, conformation_one = FALSE, custom = FALSE){
   suppressPackageStartupMessages(require("plyr"))
   # Input  -- assgined_computed_cs_filename (character string): path to assigned computed chemical shift data
   # Input  -- unassgined_data_file (character string): path to  unassigned chemical shift peak (expects this data under column named c("cs"))
@@ -187,6 +196,6 @@ SCAHA <- function(assgined_computed_cs_filename="data/predicted_CS_table_test_cl
   unassgined_data <- duplicate_unassigned_data(unassgined_data, assgined_computed_cs)
   
   # run get_assignments (work-horse)
-  ddply(.data=assgined_computed_cs, .var=c("conformation"),.fun = get_assignments, unassgined_data=unassgined_data, output=output, .parallel = parallel, testing = testing)  
+  ddply(.data=assgined_computed_cs, .var=c("conformation"),.fun = get_assignments, unassgined_data=unassgined_data, output=output, .parallel = parallel, testing = testing, custom = custom)  
 }
 

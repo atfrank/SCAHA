@@ -11,9 +11,11 @@ option_list <- list(
   make_option(c("-o", "--output"), type="character",default="tests/assigned_shifts",
               help="output prefix name [default %default]"),
   make_option(c("-t", "--testing"), action="store_true", default=FALSE,
-              help="run in testing mode; correct assignment are known and provided [default %default]"),                            
+              help="run in testing mode; correct assignment are known and provided [default %default]"),              
   make_option(c("-v", "--verbose"), action="store_true", default=FALSE,
-              help="print header and progress information [default %default]")
+              help="print header and progress information [default %default]"),                            
+  make_option(c("-c", "--custom"), action="store_true", default=FALSE,
+              help="using custom hungarian algorithm [default %default]")
 )
 parser <- OptionParser(usage = "%prog [options] predicted_chemical_shifts chemical_shift_peaks", option_list=option_list)
 
@@ -34,6 +36,10 @@ if(length(arguments$args) != 2) {
   
   # load library and our custom functions
   library(plyr)
+  if(opt$custom){
+    dyn.load("R/hungarian.so")
+    source("R/hungarian.R")
+  }
   
   # library SCAHA R library
   source("R/library.R")
@@ -52,15 +58,15 @@ if(length(arguments$args) != 2) {
   testing <- opt$testing
   weighted <- opt$weighted
   verbose <- opt$verbose
+  custom <- opt$custom
   
   # set up parallel backend
   if (parallel){
     suppressPackageStartupMessages(library(doParallel))
 		doParallel::registerDoParallel(cores = nprocessors)  
   }
-
   # assign chemical shifts
-  SCAHA(assgined_computed_cs_filename = predicted_shifts_file, unassgined_data = unassgined_data, testing = testing, output = output, parallel = parallel)
+  SCAHA(assgined_computed_cs_filename = predicted_shifts_file, unassgined_data = unassgined_data, testing = testing, output = output, parallel = parallel, custom = custom)
 }
 
 

@@ -1,4 +1,4 @@
-dyn.load("R/hungarian.so")
+#dyn.load("R/hungarian.so")
 
 hungarian <-
   function(x, maximum = FALSE)
@@ -15,7 +15,7 @@ hungarian <-
     
     if(maximum) x <- max(x) - x
     
-    # multiply all values by 1000 (3 decimal places accuracy)
+    # multiply all values by 100 (2 decimal places accuracy)
     out <- .C("hungarian", n=as.integer(nc), x=as.integer(round(c(t(x)) * 100)), p=integer(nc))$p + 1
     out <- out[seq_len(nr)]
     class(out) <- "hungarian"
