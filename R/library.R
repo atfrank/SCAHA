@@ -56,16 +56,25 @@ duplicate_unassigned_data <- function(unassgined_data, assgined_computed_cs){
   return(unassgined_data)
 }
 
-assign <- function(x, y, z=NULL, custom = FALSE){
+assign <- function(x, y, z=NULL, custom = FALSE, twoD = FALSE){
   suppressPackageStartupMessages(require("clue"))
   # assigns elements in y to elements in x 
   # Input -- x (vector): e.g., chemical shifts 
   # Input -- y (vector): e.g., chemical shifts which are to be mapped to those in x (note that x can be greater than y)
   # Input -- z (vector): optional weights  
-  
-  xmat <- matrix(x,nrow=length(y),ncol=length(x),byrow=T)  
-  ymat <- matrix(y,nrow=length(y),ncol=length(x),byrow=F)
-  costmat <- abs(xmat-ymat)
+  if (!twoD){
+    xmat <- matrix(x,nrow=length(y),ncol=length(x),byrow=T)  
+    ymat <- matrix(y,nrow=length(y),ncol=length(x),byrow=F)
+    costmat <- abs(xmat-ymat)
+  } else {
+    costmat <- matrix(0, nrow = nrow(unassgined_data), ncol = nrow(assgined_computed_cs))
+    for (i in 1:nrow(unassgined_data)){
+      d1 <- matrix(as.vector(unlist(unassgined_data[i, c("ppm1", "ppm2")])), ncol=2, nrow=nrow(assgined_computed_cs), byrow = TRUE)
+      d2 <- matrix(as.vector(unlist(assgined_computed_cs[, c("peak_H", "peak_C")])), ncol=2, byrow = FALSE)
+      w2 <- matrix(as.vector(unlist(assgined_computed_cs[, c("weight_H", "weight_C")])), ncol=2, byrow = FALSE)
+      costmat[i, ] <- w2[,1]*abs(d1[,1]-d2[,1])+w2[,2]*abs(d1[,2]-d2[,2])
+    }
+  }
   
   # should I use a weighted cost matrix or not (not yet tested)
   if (is.null(z)){
@@ -109,7 +118,7 @@ get_assignment_cost <- function(a, costmat){
   return(cost)
 }
 
-get_assignments <- function(assgined_computed_cs, unassgined_data=unassgined_data, testing=FALSE, output=output, weighted=FALSE, iter=1, freq_output=1, scale=0.0, custom = FALSE){
+get_assignments <- function(assgined_computed_cs, unassgined_data=unassgined_data, testing=FALSE, output=output, weighted=FALSE, iter=1, freq_output=1, scale=0.0, custom = FALSE, twoD = FALSE){
   # Assign Peaks Using the Hungarian Algorithm 
   # Input  -- assgined_computed_cs (dataframe): assigned computed chemical shifts (must contain columns: c("resid", "resname", "nucleus", "cs", "error"))
   # Input  -- unassgined_data (dataframe): unassigned chemical shift peak (expect this data under column named c("cs"))
@@ -122,7 +131,11 @@ get_assignments <- function(assgined_computed_cs, unassgined_data=unassgined_dat
 
   # read in assignment computed chemical shift data
   assgined_computed_cs <- assgined_computed_cs[order(assgined_computed_cs$resid, assgined_computed_cs$nucleus),]  
-  unassgined_data_only <- unassgined_data[,"cs"]
+  if(!twoD){
+    unassgined_data_only <- unassgined_data[,"cs"]
+  } else {
+    unassgined_data_only <- unassgined_data[,c("ppm1", "ppm2")]
+  }
   
   # initialize matrix for a probability matrix
   # not need in the current implementation of SCAHA since we've set iter
@@ -135,9 +148,9 @@ get_assignments <- function(assgined_computed_cs, unassgined_data=unassgined_dat
   for(i in 1:iter){
     # do actual assignment
     if (weighted){      
-    	a <- assign(unassgined_data_only, assgined_computed_cs$cs, z=assgined_computed_cs$error, custom = custom)
+    	a <- assign(unassgined_data_only, assgined_computed_cs$cs, z=assgined_computed_cs$error, custom = custom, twoD = twoD)
     } else {
-    	a <- assign(unassgined_data_only, assgined_computed_cs$cs, custom = custom)
+    	a <- assign(unassgined_data_only, assgined_computed_cs$cs, custom = custom, twoD = twoD)
     }
     # store a probablity matrix
     prob <- prob + a$a_mat
@@ -153,15 +166,26 @@ get_assignments <- function(assgined_computed_cs, unassgined_data=unassgined_dat
 			if (testing){
 				# for testing: merge pseudo-unassigned chemical shift data with the predicted assignments
 				# allow us to easily assess assignment accuracy for cases where we do know the correct assignment
-				tmp <- merge(unassgined_data, assgined_computed_cs, by=c("resid","nucleus"))
-				tmp <- tmp[order(tmp$resid, tmp$nucleus),]
-				tmp <- rename(tmp, c("resname.x" = "resname", "cs.x"="actual", "cs.y"="predicted"))
-				tmp <- unique(tmp[, c("conformation", "resid", "resname", "nucleus", "actual", "assigned", "predicted")])			
+				if(!twoD){
+				  tmp <- merge(unassgined_data, assgined_computed_cs, by=c("resid","nucleus"))
+				  tmp <- tmp[order(tmp$resid, tmp$nucleus),]
+				  tmp <- rename(tmp, c("resname.x" = "resname", "cs.x"="actual", "cs.y"="predicted"))
+				  tmp <- unique(tmp[, c("conformation", "resid", "resname", "nucleus", "actual", "assigned", "predicted")])			
+				} else {
+				  tmp <- merge(unassgined_data, assgined_computed_cs, by=c("resid","nucleus"))
+				  tmp <- tmp[order(tmp$resid, tmp$nucleus),]
+				  tmp <- rename(tmp, c("resname.x" = "resname", "cs.x"="actual", "cs.y"="predicted"))
+				  tmp <- unique(tmp[, c("conformation", "resid", "resname", "nucleus", "actual", "assigned", "predicted")])			
+				}
 			} else {
-				tmp <- rename(assgined_computed_cs, c("cs"="predicted"))
-				tmp <- unique(tmp[, c("conformation", "resid", "resname", "nucleus", "assigned", "predicted")])			
+				if(!twoD){
+				  tmp <- rename(assgined_computed_cs, c("cs"="predicted"))
+				  tmp <- unique(tmp[, c("conformation", "resid", "resname", "nucleus", "assigned", "predicted")])			
+				} else {
+				  tmp <- rename(assgined_computed_cs, c("cs"="predicted"))
+				  tmp <- unique(tmp[, c("conformation", "resid", "resname", "nucleus", "assigned", "predicted")])			
+				}
 			}
-			
 			# output assignments to a text file
 			write.table(tmp, file = paste(output, "_", i, "_", conformation, ".txt", sep = ""), quote = FALSE, row.names = FALSE, col.names = FALSE)
 			if (verbose){print(tmp)}			
