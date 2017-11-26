@@ -66,7 +66,6 @@ assign <- function(x, y, z=NULL, custom = FALSE){
   xmat <- matrix(x,nrow=length(y),ncol=length(x),byrow=T)  
   ymat <- matrix(y,nrow=length(y),ncol=length(x),byrow=F)
   costmat <- abs(xmat-ymat)
-  
   # should I use a weighted cost matrix or not (not yet tested)
   if (is.null(z)){
 		if(custom){

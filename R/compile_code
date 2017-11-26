@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+echo + rm hungarian.o assignment.o hungarian.so
+rm hungarian.o assignment.o hungarian.so
+echo + R CMD SHLIB hungarian.c hungarian.h assignment.c -o hungarian.so
+R CMD SHLIB hungarian.c hungarian.h assignment.c -o hungarian.so

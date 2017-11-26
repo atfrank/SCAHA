@@ -14,7 +14,9 @@ How to Run:
 # command line
 
 # compile c code, create shared object
-R CMD SHLIB hungarian.c hungarian.h
+./compile_code
++ rm hungarian.o assignment.o hungarian.so
++ R CMD SHLIB hungarian.c hungarian.h assignment.c -o hungarian.so
 # test hungarian algorithm
 Rscript hungarian_c.R   
 # Prints the total cost, and time execution

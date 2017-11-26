@@ -13,10 +13,9 @@ hungarian <-
     if(nc > nr)
       x <- rbind(x, matrix(2 * sum(x), nc - nr, nc))
     
-    if(maximum) x <- max(x) - x
-    
-    # multiply all values by 100 (2 decimal places accuracy)
-    out <- .C("hungarian", n=as.integer(nc), x=as.integer(round(c(t(x)) * 100)), p=integer(nc))$p + 1
+    x<-floor(t(x) * 100)
+    storage.mode(x) <- "double"
+    out <- .C("hungarian", n=as.integer(nc), x=x, p=integer(nc))$p + 1
     out <- out[seq_len(nr)]
     class(out) <- "hungarian"
     out

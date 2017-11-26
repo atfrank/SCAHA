@@ -15,7 +15,7 @@ generate_mat <- function(n){
 }
 
 test_hungarian <- function(){
-  dim_mat<-1000
+  dim_mat<-100
   mat<-generate_mat(dim_mat) 
   #write.table(mat, file="test.txt", row.names = FALSE, col.names = FALSE)
   colnames(mat) <- NULL
@@ -25,7 +25,6 @@ test_hungarian <- function(){
       sum = sum + mat[i, xy[i]]
     return(sum)
   }
-  
   start.time <- Sys.time()
   a<-hungarian(mat)
   end.time <- Sys.time()
@@ -39,11 +38,16 @@ test_hungarian <- function(){
   #print(a)
   print("Custom Hungarian Algorithm:")
   print(time.taken)
+  print("Cost:")
   print(get_cost(a))
   #print(b)
   print("solve_LSAP:")
   print(time1.taken)
-  print(get_cost(b))
+  print("Cost:")
+  print(get_cost(a))
+  print("Mean absolute difference:")
+  print(mean(abs(mat[b] - mat[a])))
+  #write.table(b- a, file=paste(format(Sys.time(), "%b-%d-%YT%H:%M:%S-%Y"), "-result.txt", sep=""))
 }
 
 test_hungarian()
