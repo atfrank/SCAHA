@@ -141,3 +141,17 @@ $ # and useful when assigning chemical shifts to more than 1 conformation
 ./bin/scaha tests/larmord_2KOC_pool.txt tests/observed_shifts_assigned_2KOC.txt --verbose --output=tests/assigned_shifts --parallel --nprocessors=4
 ```
 
+## COMMERCIAL USE LICENSE: 
+
+If you are interested in commercial licensing of these applications (clinical, operational, etc.) please contact the University of Michigan Office of Technology Transfer for a quote and licensing options.
+
+Drew Bennett - https://techtransfer.umich.edu/team/drew-bennett/
+
+or
+
+techtransfer@umich.edu
+
+
+
+
+
